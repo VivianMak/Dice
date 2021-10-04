@@ -22,6 +22,12 @@ void draw()
       poo.show();
     }
   }
+  /*
+  if (y%2 == 0){
+    Brick bob = new Brick(x-25,y);
+    bob.show();
+  }
+  */
 }
 class Brick
 {
