@@ -1,79 +1,59 @@
-Die shrek;
 void setup()
 {
   noLoop();
-  size(555, 500);
+  size(555, 555);
 }
 
 void draw()
 {
   //pretty blue: background(184, 214, 1390);
- background(19, 168, 73);
- 
- /*
- int x = 5;
- int y = 5;
- while (y <= 500){
-   while(x <= 550){
-     shrek = new Die(x,y);
-     shrek.show();
-     x+=55;
-   }
-   y+=50;
- }
-*/
+  background(19, 168, 73);
 
-  for (int y = 5; y <= 500; y+=55)
-  {
-    for (int x = 5; x <= 550; x+=55)
-      shrek = new Die(x,y);
-      shrek.roll();
-      shrek.show();
-  }  
+  int sum = 0;
+    for (int y = 10; y < 460; y+=60)
+    {
+      for (int x = 10; x < 500; x+=60)
+      {
+        Die shrek = new Die(x,y);
+        //shrek.roll();
+        shrek.show();
+        sum = sum + numDots;
+      }
+    }  
+    
+    //System.out.println(sum);
+    //TEXT DISPLAY
+    fill(0);
+    textSize(30);
+    text("Total: " + sum, 200,525);
 }
+
 
 void mousePressed()
 {
   redraw();
 }
 
+int numDots;
 
 class Die //models one single dice cube
 {
-  //variable declarations here
-  int numDots, myX, myY;
+  //variable declarations 
+  int myX, myY;
   Die(int x, int y) //constructor
   {
-    //variable initializations here
+    //variable initializations
     numDots = (int)(Math.random()*6)+1;
     myX = x;
     myY = y;
-    
   }
-  
-  void roll()
-  {
-    if(Math.random() == 1){
-      numDots = 1;
-    }else if (Math.random() == 2){
-      numDots = 2;
-    }else if (Math.random() == 3){
-      numDots = 3;
-    }else if (Math.random() == 4){
-      numDots = 4;
-    }else if (Math.random() == 5){
-      numDots = 5;
-    }else if (Math.random() == 6){
-      numDots = 6;
-    }    
-  }
-
   
   void show()
   {
-      
-      fill(242, 178, 27);
-      rect(myX, myY, 50,50);
+      //fill((int)(Math.random()*256)+1, (int)(Math.random()*256)+1, (int)(Math.random()*256)+1);
+      fill(242, 150, 27);
+      //fill(184, 214, 1390);
+      rect(myX, myY, 50,50, 10);
       
       fill(0,0,0);
       if(numDots == 1)
@@ -117,3 +97,22 @@ class Die //models one single dice cube
       }
   }
 }
+  
+/*
+  void roll()
+  {
+    if(Math.random() == 1){
+      numDots = 1;
+    }else if (Math.random() == 2){
+      numDots = 2;
+    }else if (Math.random() == 3){
+      numDots = 3;
+    }else if (Math.random() == 4){
+      numDots = 4;
+    }else if (Math.random() == 5){
+      numDots = 5;
+    }else if (Math.random() == 6){
+      numDots = 6;
+    }    
+  }
+*/
